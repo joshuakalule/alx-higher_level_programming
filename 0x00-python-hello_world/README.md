@@ -1,2 +1,6 @@
-Python Hello World
-Basics of python
+Basic python Principles
+
+Run a python file
+Print Data
+Play with strings
+etc.
