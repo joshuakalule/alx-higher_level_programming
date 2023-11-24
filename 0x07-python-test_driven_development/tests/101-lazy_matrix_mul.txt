@@ -1,0 +1,111 @@
+>>> m = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+
+normal
+>>> print(m([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+[[ 7 10]
+ [15 22]]
+
+missing 1 argument
+>>> m([[]])
+Traceback (most recent call last):
+	...
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+
+missing 2 arguments
+>>> m()
+Traceback (most recent call last):
+  ...
+TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+
+m_a not a list
+>>> m(1, [[]])
+array([], shape=(1, 0), dtype=float64)
+
+
+m_b not a list
+>>> m([[1]], 2)
+array([[2]])
+
+
+m_a not a list of lists
+>>> m([1, 2, 3], [[2, 2]]) # doctest: +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+	...
+ValueError: ...
+
+
+m_b not a list of lists
+>>> m([[2, 2]], [1, 2, 3]) # doctest: +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+	...
+ValueError: ...
+
+
+m_a empty
+>>> m([], [[2]]) # doctest: +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+	...
+ValueError: ...
+>>> m([[]], [[2]]) # doctest: +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+	...
+ValueError: ...
+
+
+m_b empty
+>>> m([[2]], []) # doctest +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+	...
+ValueError: shapes (1,1) and (0,) not aligned: 1 (dim 1) != 0 (dim 0)
+>>> m([[2]], [[]])
+array([], shape=(1, 0), dtype=float64)
+
+
+element in m_a not an integer or float
+>>> m([['a', 2]], [[2]]) # doctest: +IGNORE_EXCEPTION_DETAIL
+Traceback (most recent call last):
+	...
+ValueError: ...
+
+
+element in m_b not an integer or float
+>>> m([[1, 2]], [[2, list()]]) # doctest: +IGNORE_EXCEPTION_DETAIL 
+Traceback (most recent call last):
+	...
+ValueError: ...
+
+
+m_a not a rectangle
+>>> m([[1, 2], [3]], [[2]]) # doctest: +IGNORE_EXCEPTION_DETAIL 
+Traceback (most recent call last):
+	...
+ValueError: ...
+
+
+m_b not rectangle
+>>> m([[2]], [[1, 2], [3, 4, 5]]) # doctest: +IGNORE_EXCEPTION_DETAIL 
+Traceback (most recent call last):
+	...
+ValueError: ...
+
+m_a and m_b can't be multiplied
+>>> m([[1, 2, 3], [1, 2, 3]], [[2]])
+Traceback (most recent call last):
+	...
+ValueError: shapes (2,3) and (1,1) not aligned: 3 (dim 1) != 1 (dim 0)
+
+
+m_a is a scalar
+>>> m("string", [[5]])
+Traceback (most recent call last):
+	...
+TypeError: Scalar operands are not allowed, use '*' instead
+
+m_b is a scalar
+>>> m([[3]], "string")
+Traceback (most recent call last):
+	...
+TypeError: Scalar operands are not allowed, use '*' instead

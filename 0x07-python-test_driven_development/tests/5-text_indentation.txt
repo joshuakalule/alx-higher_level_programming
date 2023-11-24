@@ -1,0 +1,45 @@
+>>> t = __import__('5-text_indentation').text_indentation
+
+normal 1
+>>> t("""What's your name?My name is Joshua""")
+What's your name?
+<BLANKLINE>
+My name is Joshua"What's your name?\n\nMy name is Joshua"
+
+normal 2
+>>> t("Buy these:tomatoes:onions:cabbage.")
+Buy these:
+<BLANKLINE>
+tomatoes:
+<BLANKLINE>
+onions:
+<BLANKLINE>
+cabbage.
+<BLANKLINE>
+'Buy these:\n\ntomatoes:\n\nonions:\n\ncabbage.\n\n'
+
+missing argument
+>>> t()
+Traceback (most recent call last):
+	...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+text not a string
+>>> t(list())
+Traceback (most recent call last):
+	...
+TypeError: text must be a string
+
+space at end of line
+>>> s = t("Space at the end             \n")
+Space at the end
+>>> s.split('\n')[0][-1]
+'d'
+
+
+space at the beginning of the line
+>>> s = t("then\n \t Wait a minute")
+then
+Wait a minute
+>>> s.split('\n')[1][0]
+'W'

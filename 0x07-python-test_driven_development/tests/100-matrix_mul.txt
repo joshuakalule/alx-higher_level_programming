@@ -1,0 +1,105 @@
+>>> m = __import__('100-matrix_mul').matrix_mul
+
+
+normal
+>>> m([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+
+
+missing 1 argument
+>>> m([[]])
+Traceback (most recent call last):
+	...
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+
+missing 2 arguments
+>>> m()
+Traceback (most recent call last):
+  ...
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+
+m_a not a list
+>>> m(1, [[]])
+Traceback (most recent call last):
+	...
+TypeError: m_a must be a list
+
+
+m_b not a list
+>>> m([[1]], 2)
+Traceback (most recent call last):
+	...
+TypeError: m_b must be a list
+
+
+m_a not a list of lists
+>>> m([1, 2, 3], [[2, 2]])
+Traceback (most recent call last):
+	...
+TypeError: m_a must be a list of lists
+
+
+m_b not a list of lists
+>>> m([[2, 2]], [1, 2, 3])
+Traceback (most recent call last):
+	...
+TypeError: m_b must be a list of lists
+
+
+m_a empty
+>>> m([], [[2]])
+Traceback (most recent call last):
+	...
+TypeError: m_a can't be empty
+>>> m([[]], [[2]])
+Traceback (most recent call last):
+	...
+TypeError: m_a can't be empty
+
+
+m_b empty
+>>> m([[2]], [])
+Traceback (most recent call last):
+	...
+TypeError: m_b can't be empty
+>>> m([[2]], [[]])
+Traceback (most recent call last):
+	...
+TypeError: m_b can't be empty
+
+
+element in m_a not an integer or float
+>>> m([['a', 2]], [[2]])
+Traceback (most recent call last):
+	...
+TypeError: m_a should contain only integers or floats
+
+
+element in m_b not an integer or float
+>>> m([[1, 2]], [[2, list()]])
+Traceback (most recent call last):
+	...
+TypeError: m_b should contain only integers or floats
+
+
+m_a not a rectangle
+>>> m([[1, 2], [3]], [[2]])
+Traceback (most recent call last):
+	...
+TypeError: each row of m_a must be of the same size
+
+
+m_b not rectangle
+>>> m([[2]], [[1, 2], [3, 4, 5]])
+Traceback (most recent call last):
+	...
+TypeError: each row of m_b must be of the same size
+
+
+m_a and m_b can't be multiplied
+>>> m([[2, 3],[3, 3]], [[3, 3, 4]])
+Traceback (most recent call last):
+	...
+ValueError: m_a and m_b can't be multiplied

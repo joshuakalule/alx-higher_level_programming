@@ -1,0 +1,38 @@
+>>> add_integer = __import__('0-add_integer').add_integer
+
+Integers
+>>> add_integer(2, 3)
+5
+
+Negative integers
+>>> add_integer(-2, -3)
+-5
+
+floats
+>>> add_integer(6.3, -3)
+3
+
+infinity floats
+>>> add_integer(3, float('inf'))
+inf
+
+NaN
+>>> add_integer(3, float('nan'))
+nan
+
+non float or integer
+>>> add_integer('string', 8.4)
+Traceback (most recent call last):
+	...
+TypeError: a must be an integer
+
+non float or integer
+>>> add_integer(6.3, list({2, 4}))
+Traceback (most recent call last):
+	...
+TypeError: b must be an integer
+
+result is int type
+>>> result = add_integer(4.8, 3.2)
+>>> isinstance(result, int)
+True
