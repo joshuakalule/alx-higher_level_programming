@@ -1,0 +1,5 @@
+# ignore compilation files
+**/__pycache__/
+
+# ignore swp files
+*.swp
