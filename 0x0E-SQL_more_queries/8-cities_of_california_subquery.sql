@@ -4,4 +4,4 @@
   WHERE cities.state_id = (
 		SELECT id
 		  FROM states
-		 WHERE name = 'Carlifornia');
+		 WHERE name = 'California');
