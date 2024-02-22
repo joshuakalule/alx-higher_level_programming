@@ -8,9 +8,9 @@ module.exports = class Square extends SquareOld {
   charPrint (c) {
     let str;
     if (c === undefined) { c = 'X'; }
-    for (let r = 0; r < this.height; r++) {
+    for (let row = 0; row < this.height; row++) {
       str = '';
-      for (let c = 0; c < this.weight; c++) {
+      for (let col = 0; col < this.width; col++) {
         str += c;
       }
       console.log(str);
