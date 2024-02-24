@@ -22,7 +22,7 @@ if __name__ == "__main__":
     c.execute("""
               SELECT *
               FROM states
-              WHERE states.name = '{}'
+              WHERE REGEXP_LIKE(states.name, "{}", 'c')
               ORDER BY states.id ASC;
               """.format(sys.argv[4]))
 
