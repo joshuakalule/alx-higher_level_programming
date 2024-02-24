@@ -22,9 +22,9 @@ if __name__ == "__main__":
     c.execute("""
               SELECT *
               FROM states
-              WHERE states.name = %s
+              WHERE states.name = '{}'
               ORDER BY states.id ASC;
-              """, (sys.argv[4],))
+              """.format(sys.argv[4]))
 
     for row in c.fetchall():
         print(row)
