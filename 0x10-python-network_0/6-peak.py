@@ -2,27 +2,28 @@
 """Find peak in a list of numbers."""
 
 
-def find_peak(list_of_integers):
-    if not isinstance(list_of_integers, list):
+def find_peak(array):
+    """Find peak in array."""
+    if not isinstance(array, list):
         return None
-    if list_of_integers is None or len(list_of_integers) == 0:
+    if array is None or len(array) == 0:
         return None
-    if len(list_of_integers) == 1:
-        return list_of_integers[0]
-    leng = len(list_of_integers)
+    if len(array) == 1:
+        return array[0]
+    leng = len(array)
     mid = int(leng / 2)
-    if len(list_of_integers) == 2:
-        if list_of_integers[mid - 1] <= list_of_integers[mid]:
-            return list_of_integers[mid]
-        return list_of_integers[mid - 1]
-    if list_of_integers[mid - 1] < list_of_integers[mid] and\
-       list_of_integers[mid + 1] < list_of_integers[mid]:
-        return list_of_integers[mid]
-    if list_of_integers[mid - 1] > list_of_integers[mid]:
+    if len(array) == 2:
+        if array[mid - 1] <= array[mid]:
+            return array[mid]
+        return array[mid - 1]
+    if array[mid - 1] < array[mid] and\
+       array[mid + 1] < array[mid]:
+        return array[mid]
+    if array[mid - 1] > array[mid]:
         left_list = []
-        left_list = list_of_integers[:mid]
+        left_list = array[:mid]
         return find_peak(left_list)
     else:
         right_list = []
-        right_list = list_of_integers[mid:]
+        right_list = array[mid:]
         return find_peak(right_list)
