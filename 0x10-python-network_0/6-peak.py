@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-# find peak in a list of numbers
+"""Find peak in a list of numbers."""
+
 
 def find_peak(list_of_integers):
     if not isinstance(list_of_integers, list):
