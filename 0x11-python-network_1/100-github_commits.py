@@ -16,7 +16,7 @@ if __name__ == '__main__':
         data = r.json()
         if len(data) > 0:
             for i, value in enumerate(data):
-                if i > 10:
+                if i >= 10:
                     break
                 sha = value.get('sha')
                 author_name = value.get('commit').get('author').get('name')
