@@ -1,3 +1,3 @@
 #!/bin/bash
 # task 7 - Only status code
-curl -sI "$1" | awk 'NR==1 {print $2}' 
+curl -sw "%{response_code}\n" -o /dev/null "$1" 
