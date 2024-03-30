@@ -20,7 +20,7 @@ if __name__ == '__main__':
         if len(data) > 0:
             id = data.get('id')
             name = data.get('name')
-            print(f"[{id}]: {name}")
+            print(f"[{id}] {name}")
         else:
             print('No result')
     except ValueError as e:
