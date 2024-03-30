@@ -1,3 +1,3 @@
 #!/bin/bash
 # task 7 - Only status code
-curl -sw "%{response_code}\n" -o /dev/null "$1" 
+curl -sw "%{response_code}" -o /dev/null "$1" 
